@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Booking Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/style/Booking.css">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav__logo">
+            <h1>Coworking Information</h1>
+        </div>
+        <div class="nav__logo">
+            <p><strong>Room:</strong> <span id="coworkingTitle"></span></p>
+        </div>
+    </nav>
+
+    <div class="section__container header__container">
+
+        <!-- Display coworking information -->
+        <!-- Display coworking information -->
+        <div class="header__image__container">
+            <!-- <h2>Coworking Information</h2>
+            <p><strong>Room:</strong> <span id="coworkingTitle"></span></p> -->
+            <img id="coworkingImg" alt="Coworking Image">
+            <!-- <p><strong>Description:</strong> <span id="coworkingDesc"></span></p>
+            <p><strong>Price:</strong> <span id="coworkingPrice"></span></p> -->
+            <!-- Additional information -->
+            <!-- <p><strong>Capacity:</strong> <span id="coworkingPeople"></span></p>
+            <p><strong>Floor:</strong> <span id="coworkingFloor"></span></p>
+            <p><strong>Facilities:</strong> <span id="coworkingFacilities"></span></p> -->
+
+            <div class="booking__container">
+                <form>
+                    <div class="form__group">
+                        <div class="input__group">
+                            <label>Description:</label>
+                        </div>
+                        <br>
+                        <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+                        <p id="coworkingDesc"></p>
+                    </div>
+                    <div class="form__group">
+                        <div class="input__group">
+                            <label>Price:</label>
+                        </div>
+                        <br>
+                        <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+                        <p id="coworkingPrice"></p>
+                    </div>
+                    <div class="form__group">
+                        <div class="input__group">
+                            <label>Capacity:</label>
+                        </div>
+                        <br>
+                        <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+                        <p id="coworkingPeople">Add date</p>
+                    </div>
+                    <div class="form__group">
+                        <div class="input__group">
+                            <label>Floor:</label>
+                        </div>
+                        <br>
+                        <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+                        <p id="coworkingFloor"></p>
+                    </div>
+                    <div class="form__group">
+                        <div class="input__group">
+                            <label>Facilities:</label>
+                        </div>
+                        <br>
+                        <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+                        <p id="coworkingFacilities"></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="section2__container header2__container">
+        <!-- Room booking form -->
+        <h2>Room Booking Form</h2>
+        <form id="bookingForm" action="/submit_booking" method="post">
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="time">Time:</label>
+            <input type="time" id="time" name="time" required>
+            
+            <label for="needEquipment">Need Equipment?</label>
+            <div class="equipment-options">
+                <div class="radio-tile-group">
+                    <div class="input-container">
+                        <input id="yes" type="radio" name="needEquipment" value="yes"
+                            onchange="toggleEquipmentOptions()">
+                        <div class="radio-tile">
+                            <ion-icon name="checkmark-outline"></ion-icon>
+                            <label for="yes">Yes</label>
+                        </div>
+                    </div>
+                    <div class="input-container">
+                        <input id="no" type="radio" name="needEquipment" value="no" onchange="toggleEquipmentOptions()">
+                        <div class="radio-tile">
+                            <ion-icon name="ban-outline"></ion-icon>
+                            <label for="no">No</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="equipmentSection" style="display: none;">
+
+            </div>
+
+            <div class="equipment-box" id="equipmentBox"></div>
+            <div class="info-box" id="info-box"></div>
+            <!-- <button type="submit">Book Room</button> -->
+
+            <div class="total">
+                <div class="field btn">
+                    <div class="btn-layer" id="ad"></div>
+                    <input type="submit" class="btn btn-primary" value="Book Room"></input>
+                </div>
+                <br>
+                <div class="field btn">
+                    <a href="/html/Homepage.html" class="btn btn-danger" role="button">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+
+        function toggleEquipmentOptions() {
+            const needEquipment = document.querySelector('input[name="needEquipment"]:checked');
+            const equipmentSection = document.getElementById('equipmentSection');
+            const equipmentBox = document.getElementById('equipmentBox');
+
+            if (needEquipment && needEquipment.value === 'yes') {
+                equipmentSection.style.display = 'block';
+                //updateEquipmentBox();
+            } else {
+                equipmentSection.style.display = 'none';
+                equipmentBox.innerHTML = '';
+            }
+        }
+
+
+
+        // Retrieve coworking info from query parameters
+        const queryParams = new URLSearchParams(window.location.search);
+        document.getElementById('coworkingTitle').textContent = queryParams.get('title');
+        document.getElementById('coworkingImg').src = queryParams.get('img');
+        document.getElementById('coworkingDesc').textContent = queryParams.get('desc');
+        document.getElementById('coworkingPrice').textContent = queryParams.get('price');
+
+        // Additional information
+        document.getElementById('coworkingPeople').textContent = queryParams.get('people');
+        document.getElementById('coworkingFloor').textContent = queryParams.get('floor');
+        document.getElementById('coworkingFacilities').textContent = queryParams.get('facilities');
+
+
+
+        fetch('http://localhost:3000/getmaterials', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                // Clear the existing content in the equipmentSection element.
+                const equipmentSection = document.getElementById('equipmentSection');
+                equipmentSection.innerHTML = '';
+
+                const infoSection = document.getElementById('info-box');
+                infoSection.innerHTML += `<input type="hidden" name="classCode" id="classCode" value="${queryParams.get('code')}">
+            <input type="hidden" name="coworking_title" value="${queryParams.get('title')}">
+            <input type="hidden" name="coworking_img" value="${queryParams.get('img')}">
+            <input type="hidden" name="coworking_desc" value="${queryParams.get('desc')}">
+            <input type="hidden" name="coworking_price" value="${queryParams.get('price')}">
+            <input type="hidden" name="coworking_people" value="${queryParams.get('people')}">
+            <input type="hidden" name="coworking_floor" value="${queryParams.get('floor')}">
+            <input type="hidden" name="coworking_facilities" value="${queryParams.get('facilities')}">`;
+
+                // Add material info to the equipmentSection element.
+                data.forEach(item => {
+                    equipmentSection.innerHTML += `
+                    <section class="radio-section">
+                        <div class="radio-list">
+                            <div class="radio-item">
+                                
+                                <input type="checkbox" name="equipment" id="${item.material_code}" value="${item.material_name},${item.material_price}"> 
+                                <label for="${item.material_code}">
+                                    <img src="${item.material_img}" alt="${item.material_name}">
+                                    ${item.material_name} $${item.material_price}
+                                </label>
+                            </div>
+                        </div>
+                    </section>`;
+                });
+            });
+        const roomAvailabilityStatus = queryParams.get('status');
+
+        document.getElementById('bookingForm').addEventListener('submit', function (event) {
+            // Get all checkboxes with name "equipment"
+            const checkboxes = document.querySelectorAll('input[name="equipment"]:checked');
+            const needEquipmentYes = document.querySelector('input[name="needEquipment"][value="yes"]');
+            // Check if at least one checkbox is checked
+            if (needEquipmentYes.checked && checkboxes.length === 0) {
+                // Prevent form submission
+                event.preventDefault();
+                alert(roomAvailabilityStatus + "?");
+                // Show an error message (you can customize this part)
+                alert('Please select at least one equipment.');
+            }
+
+            if (roomAvailabilityStatus === 'unavailable') {
+                // Prevent form submission
+                event.preventDefault();
+
+                // Show an error message or take other appropriate actions
+                alert('This room is currently unavailable. Please choose a different room or try again later.');
+            }
+
+        });
+    </script>
+</body>
+
+</html>

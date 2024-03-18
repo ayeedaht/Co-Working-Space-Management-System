@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Co-Working Space</title>
+    <link rel="stylesheet" href="/style/HomePage.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'
+        integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <header>
+        <a href="/html/HomePage.html" class="logo">
+            <!-- <img src="/homepagePic/logo/TicketBoo_Logo.png"> -->
+            Co-Working Space</a>
+        <!--show the logo in nav bar-->
+
+        <!--show the text button in the middle-->
+
+        <!--show the symbol in the right of the page-->
+        <div class="iconNav">
+            <a href="/html/HomePage.html" class="fa fa-home" id="homebar"></a>
+            <a href="/html/Payment.html" class="fa fa-shopping-cart" id="shopbar"></a>
+            <label class="show_button" for="check">
+                <i class="fa fa-user" id="acctbar"></i>
+            </label>
+        </div>
+
+    </header>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+    <!--this container will show the picture for each slide-->
+
+    <div class="slides-container">
+        
+        <div class="slide fade">
+            <a href=""><img src="/co-img/slide/coworking1.jpg" style="width:100%"></a>
+        </div>
+
+        <div class="slide fade">
+            <a href=""><img src="/co-img/slide/coworking2.png" style="width:100%"></a>
+        </div>
+
+        <div class="slide fade">
+            <a href=""><img src="/co-img/slide/coworking3.jpg" style="width:100%"></a>
+        </div>
+
+        <!--this is button for change the slide-->
+        <a class="prev" onclick="changeSlide(-1)">
+            <p>&#10094;</p>
+        </a>
+        <a class="next" onclick="changeSlide(1)">
+            <p>&#10095;</p>
+        </a>
+    </div>
+
+    <br>
+
+    <!--this is the dot bar below the slide and it will show the recent slide with the diffence color to others-->
+    <div style="text-align:center">
+        <!--set the first dot to 'showThis' first-->
+        <!--if click the dot it will call the function of currSlide(n) to set new picture-->
+        <span class="dot showThis" id="dot1" onclick="currSlide(1)"></span>
+        <span class="dot" id="dot2" onclick="currSlide(2)"></span>
+        <span class="dot" id="dot3" onclick="currSlide(3)"></span>
+        <!-- <span class="dot" id="dot4" onclick="currSlide(4)"></span>
+        <span class="dot" id="dot5" onclick="currSlide(5)"></span> -->
+    </div>
+
+
+    <br><br><br><br><br><br><br>
+    <!--this section use to show the recommend concert-->
+    <div class="book">
+        <div class="bookingOP" id='b_tpoutput'></div>
+        <div class="bookingOP" id='b_output'></div>
+    </div>
+
+    <section>
+        <input type="checkbox" id="check">
+            <div class="background"></div>
+            <div class="alert_box">
+                <div class="icon">
+                    <i class="fas fa-exclamation"></i>
+                </div>
+                <h1 class="confirm">Confirm</h1>
+                <p>Are you sure you want to log out of this account?</p>
+                <div class="btns">
+                    <label for="check">
+                        <a href="/html/Userlogin.html" class="logout">Logout</a></label>
+                    <label for="check">Cancel</label>
+                </div>
+            </div>
+        <br>
+        <!-- <div class="date-section">
+            <div class="day-date-container">
+                <div id="day" class="day"></div>
+                <div id="monthYear"></div>
+            </div>
+            <div class="scrollable-date-container">
+                <div class="date-container" id="dateContainer"></div>
+                <div class="day-month-container" id="dayMonthContainer"></div>
+            </div>
+        </div> -->
+
+        <div class="cards-container">
+            <h1 class="topicRec">All Room Available</h1>
+            <div class="rowSlide" id='output'></div>
+        </div>
+    </section>
+
+
+
+</body>
+
+<!--This is the container in footer and we have three column of information.-->
+<footer class="footer-container">
+
+    <!--this is first column-->
+    <div class="footer-col1">
+        <h3>Co-working Space</h3>
+        <a href="/html/HomePage.html" id="move1">
+            <h1>Home</h1>
+        </a>
+    </div>
+
+    <!--this is second column-->
+    <div class="footer-col2">
+        <h3>Welcome to our co-working space</h3>
+        <p>Our organization has built a co-working space system</p>
+        <p>to support all customers who wish to join our co-working space.</p>
+    </div>
+
+    <!--this is third column-->
+    <div class="footer-col3">
+        <h3>Contact Us</h3>
+        <div class="social-icon">
+            <a href="javascript:void(0);"><i class="fa fa-facebook"></i></a>
+            <a href="javascript:void(0);"><i class="fa fa-twitter"></i></a>
+            <a href="javascript:void(0);"><i class="fa fa-instagram"></i></a>
+            <a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a>
+        </div>
+
+
+    </div>
+    <div class="cpRight">Copyright &copy 2023 co-working!. All Rights Reserved</div>
+
+
+    <script>
+        let slideIndex = 1;
+
+        showSlidesAuto();
+        showSlides(slideIndex);
+
+        function changeSlide(n) {
+            slideIndex += n;  /*we will add n */
+            showSlides(slideIndex);
+        }
+
+        function currSlide(n) {
+            slideIndex = n;
+            showSlides(n);
+        }
+
+        function showSlides(n) {
+            let slides = document.getElementsByClassName("slide");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {
+                slideIndex = 1;
+            }
+            if (n < 1) {
+                slideIndex = slides.length;
+            }
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" showThis", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " showThis";
+        }
+
+        function showSlidesAuto() {
+
+            let i;
+            let slides = document.getElementsByClassName("slide");
+            let dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" showThis", "");
+            }
+
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " showThis";
+
+            setTimeout(showSlidesAuto, 5000); // This will call this function in every 5 seconds
+        }
+
+
+        fetch('http://localhost:3000/getcoworkinginfo', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                // Clear the existing content in the output element.
+                document.querySelector("#output").innerHTML = null;
+
+                // Add coworking info to the output element.
+                const jsonData = document.getElementById('output');
+                data.forEach(item => {
+
+                    jsonData.innerHTML += `
+        <div class='card' id='${item.class_code}' onclick="showInfo('${item.class_code}')">
+            <img src='${item.class_img}' class='card-img' />
+            <div class='info'>
+                <h3 class='card-date'> ${item.num_people} people</h3>
+                <h1 class='card-name'>${item.class_title}</h1>
+                <h3 class='card-loca'>${item.class_desc}</h3>
+                
+                <div class='button-container'></div>
+            </div>
+        </div>`;
+                });
+
+            });
+
+        fetch('http://localhost:3000/getbooking', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                // Clear the existing content in the output element.
+                document.querySelector("#b_output").innerHTML = null;
+
+                // Add booking info to the output element.
+                const jsonData = document.getElementById('b_output');
+                const jsonDatatp = document.getElementById('b_tpoutput');
+                if (data.length > 0) {
+                    // Loop through each booking and display the relevant information.
+                    jsonDatatp.innerHTML += `<h1>My Booking</h1>`;
+                    data.forEach(item => {
+                        jsonData.innerHTML += `
+                <div class='booking-card'>
+                    <div class='date-month-box'>
+                        <p>${getMonthAbbreviation(item.b_date)}</p>
+                        <p>${getDay(item.b_date)}</p>
+                    </div>
+                    <h2>${item.b_room}</h2>
+                    <p>${item.b_desc}</p>
+                    <p>Date: ${item.b_date}, Time: ${item.b_time}</p>
+                    <p>Equipment Needed: ${item.b_need_equipment}</p>
+                    <p>Price: $${item.b_price}</p>
+                </div>`;
+                    });
+                }
+            });
+
+        function getMonthAbbreviation(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleString('en-us', { month: 'short', timeZone: 'UTC' });
+        }
+
+        function getDay(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleString('en-us', { day: 'numeric', timeZone: 'UTC' });
+        }
+
+
+
+
+
+
+        /* Function to show coworking info when the user clicks on a coworking card. */
+        function showInfo(classCode) {
+            fetch(`http://localhost:3000/getcoworkinginfo/${classCode}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    let code = data.class_code;
+                    let title = data.class_title;
+                    let img = data.class_img;
+                    let desc = data.class_desc;
+                    let price = data.class_price;
+                    let people = data.num_people;
+                    let floor = data.floor;
+                    let facilities = data.facilities;
+                    let status = data.status;
+
+                    // Build the query parameters
+                    const queryParams = `?code=${code}&title=${title}&img=${img}&desc=${desc}&price=${price}&people=${people}&floor=${floor}&facilities=${facilities}&status=${status}`;
+
+                    // Redirect to Booking.html with query parameters
+                    window.location.href = `Booking.html${queryParams}`;
+
+                });
+        }
+
+        function generateDateButtons() {
+            const dateContainer = document.getElementById('dateContainer');
+            const currentDate = new Date();
+            const currentDayOfWeek = currentDate.toLocaleString('en-US', { weekday: 'long' });
+
+            // Display day and date
+            const dayElement = document.getElementById('day');
+            dayElement.textContent = currentDayOfWeek;
+
+            // Display month and year
+            const monthYearElement = document.getElementById('monthYear');
+            monthYearElement.textContent = currentDate.toLocaleString('en-US', { month: 'long', year: 'numeric' });
+
+            // Keep track of the currently selected button
+            let selectedButton = null;
+
+            // Display the current date and the next 365 dates (up to the next year)
+            for (let i = 0; i <= 365; i++) {
+                const dateButtonContainer = document.createElement('div');
+                dateButtonContainer.classList.add('date-container-item');
+
+                // Display the date button
+                const dateButton = document.createElement('button');
+                const nextDate = new Date(currentDate);
+                nextDate.setDate(currentDate.getDate() + i);
+                dateButton.textContent = nextDate.getDate();
+                dateButton.classList.add('date-button');
+                dateButtonContainer.appendChild(dateButton);
+
+                // Display the day of the week
+                const dayOfWeekElement = document.createElement('div');
+                dayOfWeekElement.textContent = nextDate.toLocaleString('en-US', { weekday: 'short' });
+                dayOfWeekElement.classList.add('day-of-week');
+                dateButtonContainer.appendChild(dayOfWeekElement);
+
+                // Add a click event listener to each date button
+                dateButton.addEventListener('click', () => {
+                    // Check if there is a previously selected button
+                    if (selectedButton) {
+                        // Reset the color of the previously selected button
+                        selectedButton.classList.remove('selected-button');
+                    }
+
+                    // Set the color of the clicked button
+                    dateButton.classList.add('selected-button');
+
+                    // Update the selected button
+                    selectedButton = dateButton;
+
+                    // Call the showInfoForDate function with the clicked date
+                    showInfoForDate(nextDate);
+
+                    // Send the date and month (in numbers) to the fetch function
+                    fetchCoworkingInfo(nextDate.getDate(), nextDate.getMonth() + 1);
+                });
+
+                dateContainer.appendChild(dateButtonContainer);
+            }
+        }
+        function fetchCoworkingInfo(day, month) {
+            console.log(day + " " + month);
+            date = `2023-${month}-${day}`;
+            fetch(`http://localhost:3000/getcoworkingin/${date}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log("hi");
+                    console.log('Received data:', data); // Log the received data
+                    console.log('Received data:', data.grouping_category);
+                    if (!data || data.length === 0) {
+                        console.error('Invalid or empty response received');
+                        return;
+                    }
+
+                    // Clear the existing content in the output element.
+                    document.querySelector("#date_output").innerHTML = null;
+
+                    // Add coworking info to the output element.
+                    const jsonData = document.getElementById('date_output');
+                    data.forEach(item => {
+                        jsonData.innerHTML += `
+                <div class='card' id='${item.class_code}' onclick="showInfo('${item.class_code}')">
+                    <img src='${item.class_img}' class='card-img' />
+                    <div class='info'>
+                        <h3 class='card-date'> ${item.num_people} people</h3>
+                        <h1 class='card-name'>${item.class_title}</h1>
+                        <h3 class='card-loca'>${item.class_desc}</h3>
+                        <div class='button-container'></div>
+                    </div>
+                </div>`;
+                    });
+                })
+                .catch(error => {
+                    console.error('Fetch error:', error);
+                });
+        }
+
+
+
+        function showInfoForDate(date) {
+            // Update the day and date elements
+            const dayElement = document.getElementById('day');
+            dayElement.textContent = `${date.toLocaleString('en-US', { weekday: 'long' })}, ${date.getDate()}`;
+
+            const monthYearElement = document.getElementById('monthYear');
+            monthYearElement.textContent = `${date.toLocaleString('en-US', { month: 'long' })} ${date.getFullYear()}`;
+
+            // Add your logic here to show information for the selected date
+            console.log(`Clicked on date: ${date.toDateString()}`);
+        }
+
+        // Initial setup
+        generateDateButtons();
+
+
+    </script>
+</footer>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet" />
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'
+        integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <title>Login and Signup</title>
+    <link rel="stylesheet" href="/style/Loginpage.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <header>
+        <!--show the logo in nav bar-->
+        <a href="" class="logo">Co-Working Space</a>
+
+    </header>
+
+    <br><br><br>
+
+    <div class="wrapper">
+        <div class="title">
+            <h1>User Login</h1>
+        </div>
+        <div class="form-inner">
+            <!-- Form for user to Log in -->
+            <form action="/login-submit" method="POST" class="login">
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input type="email" placeholder="Your email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Enter a valid email address" required />
+                </div>
+                <br>
+                <div class="field">
+                    <label for="password">Password</label>
+                    <input type="password" placeholder="Your password" name="password" required />
+                </div>
+                <br>
+                <div class="field btn">
+                    <div class="btn-layer"></div>
+                    <input type="submit" value="Login" />
+                </div>
+                <div class="signup-link">
+                    Not a member?
+                    <a href="/html/SignupUser.html">Sign up</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    
+
+    <script>
+        /*this use for open and close the bar*/
+        let show = 0;
+        function showBar() {
+            /*if show is 0, it will open the bar. and 1 will close the bar*/
+            /*we will change the color and change the position of the bar and icon too 
+            (icon will change in the case of the size of screen change to less than 700px*/
+            if (show == 0) {
+                show = 1;
+                document.getElementsByClassName('bar')[0].style.left = "0px";
+                document.getElementsByClassName('iconNav')[0].style.left = "0px";
+            } else {
+                show = 0;
+                document.getElementsByClassName('bar')[0].style.left = "-100%";
+                document.getElementsByClassName('iconNav')[0].style.left = "-100%";
+            }
+        }
+    </script>
+</body>
+
+</html>

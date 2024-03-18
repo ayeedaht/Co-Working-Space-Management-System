@@ -1,0 +1,510 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
+
+:root {
+    --primary-color: #143171;
+    --primary-color-dark: #435681;
+    --text-dark: #333333;
+    --text-light: #767268;
+    --extra-light: #f3f4f6;
+    --white: #ffffff;
+    --max-width: 1200px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+nav {
+    max-width: var(--max-width);
+    margin: auto;
+    padding: 5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav__logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+/* .booking-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+} */
+
+.section__container {
+    max-width: var(--max-width);
+    margin: auto;
+    /* padding: 2rem 1rem; */
+}
+
+.section__header {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    text-align: center;
+}
+
+.section2__container {
+    max-width: var(--max-width);
+    margin: auto;
+    padding: 2rem 10rem;
+}
+
+.section2__header {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    text-align: center;
+}
+
+a {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    background-color: rgb(218, 6, 6);
+    padding: 1rem 1rem 1rem 1rem;
+    border-radius: 10rem;
+}
+
+a:hover{
+    background-color: rgb(250, 73, 73);
+}
+
+img {
+    width: 100%;
+    display: flex;
+}
+
+.header__image__container {
+    padding: 1rem 1rem 5rem 1rem;
+}
+
+.header__image__container #coworkingImg{
+    position: relative;
+    min-height: 500px;
+    /* background-image: linear-gradient(to right,
+            rgba(44, 56, 85, 0.9),
+            rgba(100, 125, 187, 0.1)),
+        url("assets/slide1.jpg"); */
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 2rem;
+}
+
+.booking__container {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    /* width: calc(100% - 6rem); */
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 3rem 2rem;
+    border-radius: 2rem;
+    background-color: rgba(255, 255, 255, 0.7);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.1);
+}
+
+.booking__container form {
+    width: 100%;
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+
+.booking__container .input__group {
+    width: 100%;
+    position: relative;
+}
+
+.booking__container label {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+.booking__container .form__group p {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: var(--text-light);
+}
+
+.booking__container .btn {
+    padding: 2rem;
+    outline: none;
+    border: none;
+    font-size: 1.5rem;
+    color: white;
+    background-color: var(--primary-color);
+    border-radius: 100%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.booking__container .btn:hover {
+    background-color: var(--primary-color-dark);
+}
+
+h2{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Adjust the margin as needed */
+
+/* #coworkingImg {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+} */
+
+form {
+    display: grid;
+    gap: 15px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+#equipmentSection {
+    display: none;
+}
+
+#equipmentSection label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#equipmentSection img {
+    max-width: 50px; /* Adjust the max-width as needed */
+    max-height: 50px; /* Adjust the max-height as needed */
+    margin-right: 10px;
+    border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+}
+
+.equipment-options {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    /* padding: 20px 100px; */
+    border-radius: 5px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+}
+
+.equipment-box {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.equipment-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 5px;
+}
+
+.equipment-item img {
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.coworking-info {
+    margin-bottom: 20px;
+}
+
+/* button {
+    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2980b9;
+} */
+
+
+
+.total{
+    display: inline-block;
+}
+
+/*set the button pressed*/
+form .btn {
+    height: 50px;
+    width: 100%;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+}
+
+/*Set the color of the button pressed.*/
+form .btn .btn-layer {
+    height: 100%;
+    width: 300%;
+    position: absolute;
+    left: -100%;
+    background: #143171;
+    border-radius: 5px;
+    transition: all 0.4s ease;
+}
+
+/*Change the color of button when the mouse over it.*/
+form .btn:hover .btn-layer {
+    background: #6366f1;
+}
+
+/*Change the font color and set the aspect.*/
+form .btn input[type="submit"] {
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    position: relative;
+    background: none;
+    border: none;
+    color: #fff;
+    padding-left: 0;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.custom-select {
+    position: relative;
+    display: inline-block;
+}
+
+.select-selected {
+    background-color: #f1f1f1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.select-items {
+    /*display: none;*/
+    position: absolute;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    z-index: 1;
+}
+
+.select-item {
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.select-item img {
+    max-width: 20px;
+    max-height: 20px;
+    margin-right: 10px;
+}
+
+/*======*/
+
+.radio-tile-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.input-container {
+    position: relative;
+    height: 7rem;
+    width: 7rem;
+    margin: 0.5rem;
+}
+
+.input-container input {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    cursor: pointer;
+    z-index: 2;
+    opacity: 0;
+}
+
+.input-container .radio-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    transition: all 300ms ease;
+}
+
+.input-container ion-icon {
+    color: var(--primary-color);
+    font-size: 3rem;
+}
+
+.input-container label {
+    color: var(--primary-color);
+    font-size: 0.80rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+input:checked+.radio-tile {
+    background-color: var(--primary-color);
+    box-shadow: 0 0 12px var(--primary-color);
+    transform: scale(1.1);
+}
+
+input:hover+.radio-tile {
+    box-shadow: 0 0 12px var(--primary-color);
+}
+
+input:checked+.radio-tile ion-icon,
+input:checked+.radio-tile label {
+    color: white;
+}
+
+/* Checkbox */
+
+
+/* .radio-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+.radio-item [type="checkbox"]{
+    display: none;
+}
+
+.radio-item + .radio-item{
+    margin-top: 15px;
+}
+.radio-item label{
+    display: block;
+    padding: 20px 60px;
+    background: white;
+    border:2px solid rgb(240, 240, 240);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 400;
+    min-width: 250px;
+    white-space: nowrap;
+    position: relative;
+}
+.radio-item label:after,
+.radio-item label:before{
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+}
+
+.radio-item label:after{
+    height: 20px;
+    width: 20px;
+    border:2px solid #524eee;
+    left: 20px;
+    top: calc(50% - 12px);
+}
+.radio-item label:before{
+    background: #524eee;
+    height: 10px;
+    width: 10px;
+    left: 27px;
+    top: calc(50% - 5px);
+    transform: scale(5);
+    transition: .4s ease-in-out 0s;
+    opacity: 0;
+    visibility: hidden;
+}
+.radio-item [type="checkbox"]:checked ~ label{
+    border-color: #524eee;
+}
+
+.radio-item [type="checkbox"]:checked ~ label:before{
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+
+@media (width < 900px) {
+    .booking__container form {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (width < 600px) {
+
+    .header__container {
+        padding-bottom: 25rem;
+    }
+
+    .booking__container {
+        flex-direction: column;
+        bottom: -25rem;
+    }
+
+    .booking__container form {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+}
+
